@@ -139,7 +139,7 @@ See [full-stack-tech-test-backend](https://github.com/HultTechnology/full-stack-
 
 **AI Tool Usage:**
 
-- ChatGPT & Copilot & VS code build in AI - for debugging & suggestingn best practices & tools/stack
+- ChatGPT & Copilot & VS code build in AI - for debugging, suggestingn best practices & tools & tech stack
 
 **Bonus Feature (if implemented):**
 
