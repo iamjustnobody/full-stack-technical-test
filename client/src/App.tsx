@@ -8,7 +8,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { toast, Toaster } from "sonner";
 // import { EventList } from "./pages/EventList";
 // import EventDetail from "./pages/EventDetail";
-import { MyEvents } from "./pages/MyEvents";
+import MyEvents from "./pages/MyEvents";
 import { LoadingSkeleton } from "./components/base/Skeleton";
 import { Layout } from "./components/layout/Layout";
 
