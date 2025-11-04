@@ -55,7 +55,7 @@ export function RegisterDialog({
         addRegistration(event.id, res);
         onOpenChange(false);
 
-        toast.error(
+        toast.success(
           mode === "register" ? "Registered 🎉" : "Added to Waitlist 🕓",
           {
             description: `You’re ${
