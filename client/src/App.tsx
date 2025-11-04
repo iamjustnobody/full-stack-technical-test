@@ -1,4 +1,4 @@
-import { Suspense, useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -6,11 +6,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PageError, { GlobalErrorFallback } from "./pages/ErrorPage";
 import { ErrorBoundary } from "react-error-boundary";
 import { toast, Toaster } from "sonner";
-import { EventList } from "./pages/EventList";
+// import { EventList } from "./pages/EventList";
 import { EventDetail } from "./pages/EventDetail";
 import { MyEvents } from "./pages/MyEvents";
 import { LoadingSkeleton } from "./components/base/Skeleton";
 import { Layout } from "./components/layout/Layout";
+
+const EventList = lazy(() => import("./pages/EventList"));
 
 function App() {
   return (
