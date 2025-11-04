@@ -9,6 +9,7 @@ import { useLocalRegistrations } from "@/hooks/useLocalRegistration";
 import { EventDetailSkeleton } from "@/components/base/Skeleton";
 import { EventCategoryBadge } from "@/components/features/EventCategoryBadge";
 import { RegisterDialog } from "@/components/features/RegisterDialog";
+import { REGISTRATION_NONE, type RegistrationStatus } from "@/shared/types";
 
 interface PageWrapperProps {
   children: React.ReactNode;
@@ -45,8 +46,11 @@ export default function EventDetail() {
   const navigate = useNavigate();
   const { data: event, isLoading, error } = useEventQuery(id!);
 
-  const { isRegistered } = useLocalRegistrations();
+  const { isRegistered, isInWaitlist, registered, waitlist } =
+    useLocalRegistrations();
   const [open, setOpen] = useState(false);
+  const [justRegistered, setJustRegistered] =
+    useState<RegistrationStatus>(REGISTRATION_NONE);
 
   if (isLoading || !event)
     return (
@@ -60,14 +64,30 @@ export default function EventDetail() {
     );
 
   const full = event.capacity.registered >= event.capacity.max;
-  const already = isRegistered(event.id);
-  const btnLabel = already
-    ? full
-      ? "Joined Waitlist"
-      : "Already Registered"
-    : full
-    ? "Join Waitlist"
-    : "Register";
+  // const alreadyRegistered = isRegistered(event.id);
+  // const alreadyWaitlisted = isInWaitlist(event.id);
+  const alreadyRegistered =
+    !!registered[event.id] || justRegistered === "register";
+  const alreadyWaitlisted =
+    !!waitlist[event.id] || justRegistered === "waitlist";
+  // const btnLabel = already
+  //   ? "Already Registered" //full ? "Joined Waitlist"  : "Already Registered"
+  //   : full
+  //   ? "Join Waitlist"
+  //   : "Register";
+  let btnLabel = "Register";
+  let btnDisabled = false;
+
+  if (alreadyRegistered) {
+    btnLabel = "Already Registered";
+    btnDisabled = true;
+  } else if (full) {
+    btnLabel = alreadyWaitlisted ? "Already in Waitlist" : "Join Waitlist";
+    btnDisabled = alreadyWaitlisted;
+  } else {
+    btnLabel = "Register";
+    btnDisabled = false;
+  }
 
   return (
     <PageWrapper>
@@ -135,7 +155,7 @@ export default function EventDetail() {
             <Button
               className="px-6 py-3 text-lg font-medium rounded-lg bg-dark-2 hover:bg-dark-1 transition"
               onClick={() => setOpen(true)}
-              disabled={already}
+              disabled={btnDisabled}
             >
               {btnLabel}
             </Button>
@@ -148,6 +168,7 @@ export default function EventDetail() {
         onOpenChange={setOpen}
         event={event}
         mode={full ? "waitlist" : "register"}
+        setJustRegistered={setJustRegistered}
       />
     </PageWrapper>
   );

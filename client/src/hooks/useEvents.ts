@@ -12,6 +12,7 @@ interface Filter {
 }
 
 export function useEvents(limitStep = PAGE_SIZE, autoFetch = true) {
+  // autoFetch: whether to fetch events automatically upon filter change (true) or via a button (false)
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -39,9 +40,8 @@ export function useEvents(limitStep = PAGE_SIZE, autoFetch = true) {
     return () => clearTimeout(handler);
   }, [searchInput]);
 
-  //   const navigate = useNavigate();
-  //   const location = useLocation();
-
+  const navigate = useNavigate();
+  const location = useLocation();
   //   useEffect(() => {
   //     const newParams = new URLSearchParams();
   //     if (filter.search) newParams.set("search", filter.search);
@@ -50,6 +50,26 @@ export function useEvents(limitStep = PAGE_SIZE, autoFetch = true) {
   //     // setParams(newParams, { replace: true });
   //     // const newPath = `${location.pathname}?${newParams.toString()}`;
   //   }, [filter, setParams, navigate, location.pathname, location.search]);
+
+  // push filter to url - if autoFetch is false and we want to control via a button
+  const pushFilterToUrl = useCallback(
+    (newFilter: Filter) => {
+      if (autoFetch) return;
+      const params = new URLSearchParams();
+      if (newFilter.search) params.set("search", newFilter.search);
+      if (newFilter.category) params.set("category", newFilter.category);
+      if (newFilter.status) params.set("status", newFilter.status);
+      navigate(
+        `${location.pathname}${
+          params.toString() ? `?${params.toString()}` : ""
+        }`,
+        {
+          replace: false,
+        }
+      );
+    },
+    [navigate, location.pathname]
+  ); //remove filter from dependencies - used it as input param of the function instead to avoid re-render upon filter change
 
   const fetchEvents = useCallback(
     async (apiKey?: string | undefined) => {

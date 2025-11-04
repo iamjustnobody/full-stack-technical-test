@@ -21,6 +21,7 @@ export default function EventList() {
     searchInput,
     loadingMore,
   } = useEvents(6, true);
+  // autoFetch = true - fetch automatcally on filter change - no button here - could add button if prefer to manually control fetch
 
   const handleChange = (key: keyof typeof filter, value: string) => {
     if (key === "search") {
@@ -54,7 +55,7 @@ export default function EventList() {
 
       {loading && (
         <div className="grid sm:grid-cols-2 gap-4">
-          {Array.from({ length: 5 }).map((_, i) => (
+          {Array.from({ length: 3 }).map((_, i) => (
             <EventCardSkeleton key={i} />
           ))}
         </div>

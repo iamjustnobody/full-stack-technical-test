@@ -33,3 +33,9 @@ export interface AttendeeResponse {
   groupSize: number;
   registeredAt: string;
 }
+
+export type RegistrationStatus = "register" | "waitlist" | null;
+
+export const REGISTRATION_NONE: RegistrationStatus = null;
+export const REGISTRATION_REGISTER: RegistrationStatus = "register";
+export const REGISTRATION_WAITLIST: RegistrationStatus = "waitlist";

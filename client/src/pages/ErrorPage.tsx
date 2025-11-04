@@ -12,7 +12,7 @@ export default function PageError({ message }: { message?: string }) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center text-center min-h-[60vh] text-gray-100">
+    <div className="flex flex-col items-center justify-center text-center bg-dark-3 min-h-[60vh] text-gray-100">
       <h2 className="text-2xl font-semibold mb-3">⚠️ Error</h2>
       <p className="mb-6 text-gray-400">{displayMessage}</p>
       <Button onClick={() => window.location.reload()}>Reload</Button>
@@ -22,7 +22,7 @@ export default function PageError({ message }: { message?: string }) {
 
 export function GlobalErrorFallback({ error, resetErrorBoundary }: any) {
   return (
-    <div className=" flex flex-col items-center justify-center bg-dark-3 text-gray-500 p-6 text-center">
+    <div className=" flex flex-col items-center justify-center bg-dark-3  min-h-[60vh] text-gray-500 p-6 text-center">
       <h1 className="text-xl font-semibold mb-2">
         Oops! Something went wrong 😢
       </h1>
