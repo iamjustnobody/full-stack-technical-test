@@ -68,7 +68,7 @@ export function useEvents(limitStep = PAGE_SIZE, autoFetch = true) {
         }
       );
     },
-    [navigate, location.pathname]
+    [navigate, location.pathname, autoFetch]
   ); //remove filter from dependencies - used it as input param of the function instead to avoid re-render upon filter change
 
   const fetchEvents = useCallback(
@@ -113,8 +113,13 @@ export function useEvents(limitStep = PAGE_SIZE, autoFetch = true) {
     [filter, limitStep]
   );
 
+  const didMountRef = useRef(false);
   useEffect(() => {
     if (!autoFetch) return;
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
     let cancel: (() => void) | undefined;
     (async () => {
       setLastKey(undefined);
@@ -122,7 +127,7 @@ export function useEvents(limitStep = PAGE_SIZE, autoFetch = true) {
       cancel = await fetchEvents();
     })();
     return () => cancel?.();
-  }, [fetchEvents, autoFetch]);
+  }, [fetchEvents, autoFetch]); //[filter, autoFetch] if manual fetch on button click
 
   const fetchMore = (apiKey?: string) => {
     fetchEvents(apiKey);
@@ -137,7 +142,11 @@ export function useEvents(limitStep = PAGE_SIZE, autoFetch = true) {
       fetchEvents(lastKeyRef.current);
     }
   };
-
+  const handleLoadMore2 = useCallback(() => {
+    if (lastKeyRef.current) {
+      fetchEvents(lastKeyRef.current);
+    }
+  }, [fetchEvents]);
   return {
     events,
     loading,
@@ -151,6 +160,7 @@ export function useEvents(limitStep = PAGE_SIZE, autoFetch = true) {
     error,
     lastKey,
     handleLoadMore,
+    handleLoadMore2,
     loadingMore,
     pushFilterToUrl,
     setParams,
