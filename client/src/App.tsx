@@ -7,12 +7,13 @@ import PageError, { GlobalErrorFallback } from "./pages/ErrorPage";
 import { ErrorBoundary } from "react-error-boundary";
 import { toast, Toaster } from "sonner";
 // import { EventList } from "./pages/EventList";
-import EventDetail from "./pages/EventDetail";
+// import EventDetail from "./pages/EventDetail";
 import { MyEvents } from "./pages/MyEvents";
 import { LoadingSkeleton } from "./components/base/Skeleton";
 import { Layout } from "./components/layout/Layout";
 
 const EventList = lazy(() => import("./pages/EventList"));
+const EventDetail = lazy(() => import("./pages/EventDetail"));
 
 function App() {
   return (
