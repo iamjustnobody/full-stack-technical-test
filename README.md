@@ -128,8 +128,8 @@ See [full-stack-tech-test-backend](https://github.com/HultTechnology/full-stack-
 
 #### 🔗 Deployed URL
 
-**Github Repo:** https://github.com/iamjustnobody/full-stack-technical-test
-**Live Demo:** https://full-stack-technical-test-sand.vercel.app/
+- **Github Repo:** https://github.com/iamjustnobody/full-stack-technical-test
+- **Live Demo:** https://full-stack-technical-test-sand.vercel.app/
 
 #### ⚡ My Approach
 
