@@ -58,9 +58,9 @@ export function RegisterDialog({
     resolver: zodResolver(schema),
     defaultValues: { attendeeName: "", attendeeEmail: "", groupSize: 1 },
   });
-  const { formState } = form;
+  // const { formState } = form;
   const registerMutation = useRegisterEvent(event.id);
-  const { mutate } = registerMutation;
+  // const { mutate } = registerMutation;
   const { addRegistration, addToWaitlist } = useLocalRegistrations();
 
   const onSubmit = async (values: RegisterFormData) => {

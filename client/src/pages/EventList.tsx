@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 import type { Event } from "../shared/types";
 
 import { Button } from "@/components/ui/button";

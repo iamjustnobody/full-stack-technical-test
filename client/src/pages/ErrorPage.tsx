@@ -20,7 +20,8 @@ export default function PageError({ message }: { message?: string }) {
   );
 }
 
-export function GlobalErrorFallback({ error, resetErrorBoundary }: any) {
+export function GlobalErrorFallback({ error }: any) {
+  //{ resetErrorBoundary }
   return (
     <div className=" flex flex-col items-center justify-center bg-dark-3  min-h-[60vh] text-gray-500 p-6 text-center">
       <h1 className="text-xl font-semibold mb-2">

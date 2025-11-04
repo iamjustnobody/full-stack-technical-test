@@ -152,5 +152,7 @@ export function useEvents(limitStep = PAGE_SIZE, autoFetch = true) {
     lastKey,
     handleLoadMore,
     loadingMore,
+    pushFilterToUrl,
+    setParams,
   };
 }

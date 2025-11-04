@@ -1,6 +1,6 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import { ArrowLeft, Calendar, DollarSign, MapPin, Users } from "lucide-react";
+import { Calendar, DollarSign, MapPin, Users } from "lucide-react";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -43,7 +43,7 @@ const PageWrapper: React.FC<PageWrapperProps> = ({
 
 export default function EventDetail() {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { data: event, isLoading, error } = useEventQuery(id!);
 
   const { isRegistered, isInWaitlist, registered, waitlist } =
@@ -64,12 +64,15 @@ export default function EventDetail() {
     );
 
   const full = event.capacity.registered >= event.capacity.max;
-  // const alreadyRegistered = isRegistered(event.id);
-  // const alreadyWaitlisted = isInWaitlist(event.id);
+
   const alreadyRegistered =
-    !!registered[event.id] || justRegistered === "register";
+    isRegistered(event.id) ||
+    !!registered[event.id] ||
+    justRegistered === "register";
   const alreadyWaitlisted =
-    !!waitlist[event.id] || justRegistered === "waitlist";
+    isInWaitlist(event.id) ||
+    !!waitlist[event.id] ||
+    justRegistered === "waitlist";
   // const btnLabel = already
   //   ? "Already Registered" //full ? "Joined Waitlist"  : "Already Registered"
   //   : full
