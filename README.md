@@ -128,22 +128,29 @@ See [full-stack-tech-test-backend](https://github.com/HultTechnology/full-stack-
 
 #### 🔗 Deployed URL
 
-https://github.com/iamjustnobody/full-stack-technical-test
+**Github Repo:** https://github.com/iamjustnobody/full-stack-technical-test
 **Live Demo:** https://full-stack-technical-test-sand.vercel.app/
 
 #### ⚡ My Approach
 
 **Technology Choices:**
-React, Vite, TypeScript, Tailwind v4, shadcn, React Query + Hook Form + Zod, React Router Dom, react-error-boundary
+
+- React, Vite, TypeScript, Tailwind v4 + shadcn, TanStack Query (React Query) + Hook Form + Zod, React Router Dom, react-error-boundary, custom hooks - providing a scalable, type-safe, and reactive architecture suitable for dynamic data fetching and filtering while maintaining a clean developer experience.
 
 **AI Tool Usage:**
-ChatGPT & Copilot & VS code build in AI
+
+- ChatGPT & Copilot & VS code build in AI - for debugging & suggestingn best practices & tools/stack
 
 **Bonus Feature (if implemented):**
-My Events
+
+- **My Events Feature** from local storage
+- (plus some of **Event Capacity & Waitlists** - since there's no dedicated waitlist POST API, I just simulated the waitlist behavior by using the register POST API instead. This will also trigger the EVENT_FULL error, which reflects that the event is at capacity and users can only join the waitlist)
 
 **Key Design Decisions:**
-Using modern stack
+
+- Data auto fetch upon filter change (vs manual control via button) with inifite scrolling (& avoid duplicate api calls on mount);
+- Error handling on routes & api call inside each page;
+- etc
 
 #### 🚀 Getting Started
 
@@ -153,7 +160,7 @@ Using modern stack
 # Installation
 npm install
 
-# Development
+# Development (Run locally)
 npm run dev
 
 # Build
