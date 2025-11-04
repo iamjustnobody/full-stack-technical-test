@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Suspense, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PageError, { GlobalErrorFallback } from "./pages/ErrorPage";
+import { ErrorBoundary } from "react-error-boundary";
+import { toast, Toaster } from "sonner";
+import { EventList } from "./pages/EventList";
+import { EventDetail } from "./pages/EventDetail";
+import { MyEvents } from "./pages/MyEvents";
+import { LoadingSkeleton } from "./components/base/Skeleton";
+import { Layout } from "./components/layout/Layout";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+      <ErrorBoundary
+        FallbackComponent={GlobalErrorFallback}
+        onError={(error) => toast.error(error.message)}
+      >
+        <Suspense fallback={<LoadingSkeleton />}>
+          <Routes>
+            <Route path="/" element={<Layout />} errorElement={<PageError />}>
+              <Route index element={<EventList />} />
+              <Route path="events/:id" element={<EventDetail />} />
+              <Route path="my-events" element={<MyEvents />} />
+              <Route
+                path="*"
+                element={<PageError message="Page not found" />}
+              />
+            </Route>
+          </Routes>
+        </Suspense>
+      </ErrorBoundary>
+      <Toaster richColors />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
