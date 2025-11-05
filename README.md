@@ -1,50 +1,5 @@
 # Full Stack Technical Test
 
-## The Challenge
-
-Build a modern events platform that solves common challenges faced by organizations managing events in **1 hour**.
-
-This test evaluates your ability to:
-
-- Leverage AI tools effectively for rapid development
-- Solve ambiguous requirements with creative solutions
-- Build full-stack functionality under time constraints
-- Demonstrate modern frontend engineering skills
-
-**Good luck! Remember: we're evaluating your problem-solving approach and AI collaboration skills, not perfection. Use your best judgment and document your assumptions** 🚀
-
-## Before You Start
-
-### Fork This Repository
-
-1. **Fork this repository** using the "Fork" button (top right)
-   - Do NOT use "Download" or clone without forking
-2. Work in your forked repository
-3. Commit with clear START and SUBMISSION messages
-4. Submit your fork URL via email once complete
-
-### Time & Tracking
-
-- **Implementation time:** 1 hour (tracked via git commits)
-- **Documentation time:** Additional time allowed for README updates
-- **Honesty policy:** You can read requirements, review the API documentation and backend architecture/implementation beforehand, but once ready to start implementation please create the tracking commit and try complete within 1 hour. We advise ensuring the API and API key works as expected before starting.
-
-### Technical Requirements
-
-- **Frontend:** React (required) + your choice of other tools
-- **AI Tools:** Any models/assistants allowed and highly encouraged
-- **API:** Lightweight API provided with shared API key
-- **Deployment:** Any platform (API runs on AWS)
-
-### Git Timestamp
-
-```bash
-1. Fork this repository
-2. First commit: "START: Beginning 1-hour test"
-3. Work for exactly 1 hour with frequent commits
-4. Final commit: "SUBMISSION: 1-hour complete"
-```
-
 ## 📋 Core Requirements (Required)
 
 ### Must Have:
@@ -56,7 +11,7 @@ This test evaluates your ability to:
 
 ## 🚀 Bonus Features (Optional)
 
-**Quality over quantity** - pick one bonus feature that interests you most:
+**Quality over quantity** - pick one bonus feature
 
 ### 📝 Dynamic Event Categories & Content
 
@@ -115,16 +70,6 @@ The API includes 20+ sample events with:
 ### API Code
 
 See [full-stack-tech-test-backend](https://github.com/HultTechnology/full-stack-tech-test-backend)
-
-## 📦 Deliverables
-
-### Required:
-
-- **GitHub repository** (this fork) with your solution
-- **Working deployed URL**
-- **Updated README** (below) documenting your approach
-
-### Update This README:
 
 #### 🔗 Deployed URL
 
