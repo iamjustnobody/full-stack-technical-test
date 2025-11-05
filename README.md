@@ -71,6 +71,8 @@ The API includes 20+ sample events with:
 
 See [full-stack-tech-test-backend](https://github.com/HultTechnology/full-stack-tech-test-backend)
 
+## 📦 Deliverables
+
 #### 🔗 Deployed URL
 
 - **Github Repo:** https://github.com/iamjustnobody/full-stack-technical-test
