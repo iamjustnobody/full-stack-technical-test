@@ -18,7 +18,7 @@ export default function EventList() {
     setSearchInput,
     searchInput,
     loadingMore,
-  } = useEvents(6, true);
+  } = useEvents(25, true);
   // autoFetch = true - fetch automatcally on filter change - no button here - could add button if prefer to manually control fetch
 
   const handleChange = (key: keyof typeof filter, value: string) => {
